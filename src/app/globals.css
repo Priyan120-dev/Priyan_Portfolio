@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f4f2ee;
+  --card: #ffffff;
+  --ink: #0d0d0d;
+  --ink-2: #3a3a3a;
+  --mute: #77756f;
+  --faint: #a9a6a0;
+  --line: rgba(13, 13, 13, 0.1);
+  --soft: #e9e6e0;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --gutter: clamp(18px, 4vw, 64px);
+}
+
+::selection {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+html {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  scroll-behavior: auto !important; /* Managed by Lenis */
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s var(--ease), opacity 0.2s var(--ease);
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .site-container {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    width: 100%;
+  }
+
+  .section-padding {
+    padding-top: clamp(84px, 12vh, 140px);
+    padding-bottom: clamp(84px, 12vh, 140px);
+  }
+
+  .heading-display {
+    font-family: var(--font-inter), sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+  }
+
+
+  .font-serif-italic {
+    font-family: var(--font-instrument), Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .font-mono-tag {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mute);
+  }
+
+  .card-base {
+    background: var(--card);
+    border-radius: 26px;
+    box-shadow: inset 0 0 0 1px var(--line), 0 4px 20px -2px rgba(13, 13, 13, 0.03);
+    transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+
+  .card-base:hover {
+    box-shadow: inset 0 0 0 1px rgba(13, 13, 13, 0.16), 0 20px 40px -10px rgba(13, 13, 13, 0.08);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--ink);
+    color: #ffffff;
+    border-radius: 9999px;
+    padding: 12px 26px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  .btn-primary:hover {
+    background-color: #262626;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px rgba(13, 13, 13, 0.2);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: transparent;
+    color: var(--ink);
+    border-radius: 9999px;
+    padding: 11px 25px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    box-shadow: inset 0 0 0 1px var(--line);
+    transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.25s var(--ease);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--ink);
+    color: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--ink);
+    transform: translateY(-2px);
+  }
+}
+
+/* Reveal-on-scroll animations */
+.rv {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition-delay: calc(var(--i, 0) * 60ms);
+  will-change: opacity, transform;
+}
+
+.rv.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rv-mask {
+  overflow: hidden;
+}
+
+.rv-mask > * {
+  transform: translateY(115%);
+  transition: transform 0.85s var(--ease);
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+.rv-mask.is-in > * {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rv {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .rv-mask > * {
+    transform: none !important;
+  }
+}
