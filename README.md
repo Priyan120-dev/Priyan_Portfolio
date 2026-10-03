@@ -161,7 +161,7 @@ I am a 2nd-year Artificial Intelligence & Data Science undergraduate and builder
 
 I am always open to discussing new projects, hackathon collaborations, internship roles, and impactful software engineering opportunities.
 
-- 🌐 **Portfolio**: [priyan-portfolio-sand.vercel.app](https://priyan-portfolio-sand.vercel.app)
+- 🌐 **Portfolio**: [priyan-portfolio-sand.vercel.app](https://priyanportfolio-sable.vercel.app/)
 - 💼 **LinkedIn**: [linkedin.com/in/priyan-i-179a7038b](https://www.linkedin.com/in/priyan-i-179a7038b/)
 - 💻 **GitHub**: [github.com/Priyan120-dev](https://github.com/Priyan120-dev)
 - 📧 **Email**: [priyaniyappan120@gmail.com](mailto:priyaniyappan120@gmail.com)
